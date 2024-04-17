@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation Results</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #080710;
+            color: #ffffff;
+        }
+
+        .background {
+            width: 430px;
+            height: 520px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+        }
+
+        .background .shape {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .shape:first-child {
+            background: linear-gradient( #1845ad, #23a2f6);
+            left: -80px;
+            top: -80px;
+        }
+
+        .shape:last-child {
+            background: linear-gradient( to right, #ff512f, #f09819);
+            right: -30px;
+            bottom: -80px;
+        }
+
+        container {
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.13);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            margin-top: 50px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        li {
+            margin-top: 10px;
+            color: #ffffff;
+        }
+
+        a {
+            color: #23a2f6; /* Change link color */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <container>
+        <h1>Recommendation Results</h1>
+        <h2>Recommended Skills for {{ job_title }}</h2>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </container>
+    <container>
+        <h2>Recommended Courses for {{ job_title }}</h2>
+        <ul>
+            {% for course, link in courses_with_links %}
+                <li><a href="{{ link }}" target="_blank">{{ course }}</a></li>
+            {% endfor %}
+        </ul>
+    </container>
+</body>
+</html>
+
